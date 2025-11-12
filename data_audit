@@ -1,60 +1,42 @@
-Data Audit — NY Housing Dataset
+# Data Audit — NY Housing Dataset
 
-Dataset Overview
+### Dataset Overview
+- Source: NY-House-Dataset.csv (Kaggle / academic dataset)
+- Rows: ~3,000 listings
+- Columns: 17
+- Coverage: NYC — Manhattan, Brooklyn, Queens, Bronx, Staten Island
+- Granularity: one record = one property listing
 
-Source: NY-House-Dataset.csv (Kaggle / academic dataset)
+## Column Summary
+| Column | Description | Notes |
+|---|---|---|
+| TYPE | Listing type (e.g., Condo, Co-op, House) | Cleaned and grouped |
+| PRICE | Listing price (USD) | Converted to numeric; trimmed top 1% |
+| BEDS | Bedrooms | Converted to numeric |
+| BATH | Bathrooms | Cast to integer |
+| PROPERTYSQFT | Square footage | Filtered > 0 |
+| STATE | City + state + ZIP | Used for borough mapping |
+| BOROUGH | Derived location | Mapped to five boroughs |
+| LATITUDE / LONGITUDE | Coordinates | Optional for mapping |
 
-Rows: ~3,000 property listings
+## Data Quality Checks
+- Minimal missing values (< 3%) handled via imputation/removal
+- Outliers > 99th percentile in PRICE removed
+- PROPERTYSQFT ≤ 0 dropped
+- Duplicate addresses removed
+- Text columns standardized for spacing and case
 
-Columns: 17
+## Property Type Cleanup
+- Removed inactive or nonsensical types (Coming Soon, Sold, Pending, Foreclosure, Auction, Off Market, Mobile House).
+- Removed redundant suffixes (for sale, by owner).
+- Grouped similar labels into: Condo, Co-op, Townhouse, House, Multi-Family.
 
-Geography: New York City — Manhattan, Brooklyn, Queens, Bronx, and Staten Island
+## Derived Fields
+| New Field | Formula | Purpose |
+|---|---|---|
+| price_per_sqft | PRICE / PROPERTYSQFT | Compare affordability |
+| price_range | Bins via pd.cut() | Visualize price segments |
+| type_grouped | Cleaned TYPE | Simplify visual categories
 
-Granularity: One record per property listing
-
-Column Summary
-Column	Description	Notes
-TYPE	Listing type (e.g., Condo, Co-op, House)	Cleaned, grouped, simplified
-PRICE	Listing price (USD)	Converted to numeric, trimmed top 1% outliers
-BEDS	Number of bedrooms	Converted to numeric
-BATH	Number of bathrooms	Converted to integer
-PROPERTYSQFT	Property size in sq ft	Filtered to remove zero or null values
-STATE	City, state, and ZIP	Used for borough mapping
-BOROUGH	Derived from location fields	Mapped to NYC’s five boroughs
-LATITUDE / LONGITUDE	Coordinates	Optional for mapping analysis
-
-Data Quality Checks
-
-Minimal missing values (<3%) handled through imputation or removal.
-
-Outliers above the 99th percentile in PRICE removed to improve visualization clarity.
-
-Listings with PROPERTYSQFT <= 0 dropped.
-
-Duplicate entries removed by address.
-
-Standardized capitalization, spacing, and suffixes across text columns.
-
-Property Type Cleanup
-
-Removed property types that didn’t make sense or didn’t represent active listings:
-“Coming Soon”, “Sold”, “Pending”, “Foreclosure”, “Auction”, “Off Market”, “Mobile House for Sale”.
-
-Removed redundant text like “for sale” and “by owner”.
-
-Grouped similar labels under consistent categories: Condo, Co-op, Townhouse, House, Multi-Family.
-
-Result: Categorical consistency and elimination of irrelevant or misleading property types.
-
-Derived Fields
-New Field	Formula	Purpose
-price_per_sqft	PRICE / PROPERTYSQFT	Compare affordability
-price_range	Custom bins using pd.cut()	Segment listings by value
-type_grouped	Cleaned & standardized TYPE	Used for dashboard visualization
-Summary
-
-Dataset standardized and cleaned for analysis.
-
-Outliers removed, missing data handled, and text normalized.
-
-Ready for reproducible visualization in Seaborn/Matplotlib.
+## Summary
+The dataset is clean, standardized, and ready for visualization. Outliers and irrelevant types were removed, and numeric fields verified for consistency.
