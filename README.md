@@ -9,7 +9,7 @@ Goal: identify which boroughs offer the best value, explore luxury vs. median-ma
 ### Data Set 
 - Property-level housing listings including price, square footage, beds, baths, and borough
 - Derived fields for price per sq ft, price range categories, and borough groupings
-- Source: [New York Housing Data - Kaggle] (https://www.kaggle.com/datasets/shreyapande0/nyc-affordable-housing-production)
+- Source: [New York Housing Data - Kaggle](https://www.kaggle.com/datasets/shreyapande0/nyc-affordable-housing-production)
 
 ### Tools 
 - **Python** (Pandas, NumPy)
