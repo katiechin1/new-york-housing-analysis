@@ -1,0 +1,60 @@
+Data Audit — NY Housing Dataset
+
+Dataset Overview
+
+Source: NY-House-Dataset.csv (Kaggle / academic dataset)
+
+Rows: ~3,000 property listings
+
+Columns: 17
+
+Geography: New York City — Manhattan, Brooklyn, Queens, Bronx, and Staten Island
+
+Granularity: One record per property listing
+
+Column Summary
+Column	Description	Notes
+TYPE	Listing type (e.g., Condo, Co-op, House)	Cleaned, grouped, simplified
+PRICE	Listing price (USD)	Converted to numeric, trimmed top 1% outliers
+BEDS	Number of bedrooms	Converted to numeric
+BATH	Number of bathrooms	Converted to integer
+PROPERTYSQFT	Property size in sq ft	Filtered to remove zero or null values
+STATE	City, state, and ZIP	Used for borough mapping
+BOROUGH	Derived from location fields	Mapped to NYC’s five boroughs
+LATITUDE / LONGITUDE	Coordinates	Optional for mapping analysis
+
+Data Quality Checks
+
+Minimal missing values (<3%) handled through imputation or removal.
+
+Outliers above the 99th percentile in PRICE removed to improve visualization clarity.
+
+Listings with PROPERTYSQFT <= 0 dropped.
+
+Duplicate entries removed by address.
+
+Standardized capitalization, spacing, and suffixes across text columns.
+
+Property Type Cleanup
+
+Removed property types that didn’t make sense or didn’t represent active listings:
+“Coming Soon”, “Sold”, “Pending”, “Foreclosure”, “Auction”, “Off Market”, “Mobile House for Sale”.
+
+Removed redundant text like “for sale” and “by owner”.
+
+Grouped similar labels under consistent categories: Condo, Co-op, Townhouse, House, Multi-Family.
+
+Result: Categorical consistency and elimination of irrelevant or misleading property types.
+
+Derived Fields
+New Field	Formula	Purpose
+price_per_sqft	PRICE / PROPERTYSQFT	Compare affordability
+price_range	Custom bins using pd.cut()	Segment listings by value
+type_grouped	Cleaned & standardized TYPE	Used for dashboard visualization
+Summary
+
+Dataset standardized and cleaned for analysis.
+
+Outliers removed, missing data handled, and text normalized.
+
+Ready for reproducible visualization in Seaborn/Matplotlib.
