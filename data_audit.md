@@ -1,10 +1,10 @@
 # Data Audit — NY Housing Dataset
 
 ## Dataset Overview
-- Source: NY-House-Dataset.csv (Kaggle / academic dataset)
+- Source: [New York Housing Data - Kaggle] (https://www.kaggle.com/datasets/shreyapande0/nyc-affordable-housing-production)
 - Rows: ~3,000 listings
 - Columns: 17
-- Coverage: NYC — Manhattan, Brooklyn, Queens, Bronx, Staten Island
+- Coverage: NYC — (Manhattan, Brooklyn, Queens, Bronx, Staten Island)
 - Granularity: one record = one property listing
 
 ## Column Summary
