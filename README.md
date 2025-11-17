@@ -17,6 +17,7 @@ Goal: identify which boroughs offer the best value, explore luxury vs. median-ma
 - **Google Colab** — hosted Jupyter environment for reproducible workflow
 
 ### Dashboard
-<img width="707" height="519" alt="Screenshot 2025-11-12 at 10 55 50 AM" src="https://github.com/user-attachments/assets/e9636e5d-0ec1-4b9b-8a7f-7a2983671a69" />
+<img width="3972" height="2856" alt="nyc_housing_dashboard" src="https://github.com/user-attachments/assets/61822872-e1ea-4586-89b8-316ad4e64f9c" />
+
 
 
