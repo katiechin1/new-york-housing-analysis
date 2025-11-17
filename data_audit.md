@@ -37,6 +37,3 @@
 | price_per_sqft | PRICE / PROPERTYSQFT | Compare affordability |
 | price_range | Bins via pd.cut() | Visualize price segments |
 | type_grouped | Cleaned TYPE | Simplify visual categories
-
-## Summary
-The dataset is clean, standardized, and ready for visualization. Outliers and irrelevant types were removed, and numeric fields verified for consistency.
